@@ -5,7 +5,6 @@ const theme = {
   ...roboto,
   colors: {
     ...roboto.colors,
-    background: 'yellow'
   },
   containers: {
     card: {
@@ -22,6 +21,7 @@ const theme = {
       maxWidth: '960px',
       m: 0,
       mx: 'auto',
+      background: 'blue'
     }
   },
   styles: {
