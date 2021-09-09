@@ -4,13 +4,14 @@ import Link from 'next/link'
 const Page = () => (
   <div>
     <h1>
-      <Link href='/notes'>
+      Index Page
+    </h1>
+    <Link href='/notes'>
         <a>
           Link 
           {/* recommended to wrap link text in an anchor tag */}
         </a>
       </Link>
-    </h1>
   </div>
 )
 
