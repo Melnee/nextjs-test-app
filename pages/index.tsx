@@ -18,3 +18,11 @@ const Page = () => (
 )
 
 export default Page
+
+export function getStaticProps(context) {
+  console.log(context)
+
+  return {
+    props: {}
+  }  
+}
