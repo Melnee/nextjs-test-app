@@ -2,11 +2,18 @@ import React from 'react'
 import { jsx } from 'theme-ui'
 import Link from 'next/link'
 
-const Page = () => (
+import dynamic from 'next/dynamic'
+
+//this is a way of doing an import and not having it do server side rendering
+//this component in the returned div will only render when there is a request that includes this component
+const BrowserComponent = dynamic(() => import('../src/components/browser'), {ssr: false})
+
+const Page = ({content}) => (
   <div sx={{ height: 'calc(100vh - 60px' }}>
     <div sx={{variant: 'containers.page', display: 'flex', alignItems: 'top'}}>
       {/* variant points to the theme.js, containers.page, takes those styles and applies them there  */}
-      <h1 sx={{fontSize: 18, my:0}}>This is a really dope note taking app</h1>
+      <h1 sx={{fontSize: 18, my:0}}>{content.title}</h1>
+      <BrowserComponent/>
       <Link href='/notes'>
           <a>
             Link 
@@ -19,10 +26,13 @@ const Page = () => (
 
 export default Page
 
-export function getStaticProps(context) {
-  console.log(context)
 
+export function getStaticProps(){
   return {
-    props: {}
-  }  
+    props: {
+      content: {
+        title: 'This is my really nice app'
+      }
+    }
+  }
 }
